@@ -41,3 +41,9 @@
 (deftest sum-square-diff-test
   (testing "difference 1^2 + 2^2 + ... + 100^2 and (1 + 2 + ... + 100)^2"
     (is (== (sum-square-diff 101) 25164150))))
+
+
+;; problem 7
+(deftest prime-nth-test
+  (testing "10001st prime number"
+    (is (== (prime-nth 10001) 104743))))

@@ -92,3 +92,16 @@
   [limit]
   (Math/abs (- (Math/pow (reduce + (range 1 limit)) 2)
                (reduce + (map #(Math/pow % 2) (range 1 limit))))))
+
+
+;; problem 7 - 10001st prime
+;; credits to Ted Pennings http://stackoverflow.com/a/7941430
+(defn prime?
+  [n]
+      (.isProbablePrime (BigInteger/valueOf n) 5))
+
+(defn prime-nth
+  [nth]
+  (last (take (dec nth) ;; we don't consider number 2
+              (filter prime?
+                (take-nth 2 (iterate inc 1))))))
