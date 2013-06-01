@@ -11,7 +11,7 @@
 (defn sum-of-multiples
   "Returns the sum of all the multiples of a given number"
   [limit & numbers]
-  (reduce + (multiples limit numbers)))
+  (reduce + (apply multiples limit numbers)))
 
 
 (defn fib-seq
@@ -22,3 +22,22 @@
 (defn sum-of-fib
   [max-value]
   (reduce + (filter even? (take-while #(< % max-value) (fib-seq 1 1)))))
+
+
+(defn prime-seq
+  "Generates a lazy sequence of all prime numbers."
+  [numbers]
+  (cons (first numbers)
+        (lazy-seq (prime-seq (filter #(not= (mod % (first numbers)) 0) (rest numbers))))))
+
+(defn prime-factors
+  "Returns an ordered list of prime factors of n."
+  [n]
+  (loop [i 2
+         n n
+         acc '()]
+    (if (<= i n)
+      (if (zero? (rem n i))
+        (recur (inc i) (/ n i) (conj acc i))
+        (recur (inc i) n acc))
+      acc)))
