@@ -68,3 +68,20 @@
 
 (defn largest-palindrome-product [n]
   (apply max (palindrome-products n)))
+
+
+;; problem 5 - Smallest multiple
+(defn multiple-of-all?
+  "Check if n is a multiple of all given numbers"
+  [n numbers]
+  (loop [n n
+         numbers numbers]
+    (if (empty? numbers)
+      true
+      (if (not (zero? (mod n (first numbers))))
+        false
+        (recur n (rest numbers))))))
+
+(defn smallest-multiple
+  [numbers]
+  (take 1(filter #(multiple-of-all? % numbers) (iterate inc 1))))
