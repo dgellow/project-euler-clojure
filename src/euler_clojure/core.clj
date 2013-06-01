@@ -85,3 +85,10 @@
 (defn smallest-multiple
   [numbers]
   (take 1(filter #(multiple-of-all? % numbers) (iterate inc 1))))
+
+
+;; problem 6 - Sum square difference
+(defn sum-square-diff
+  [limit]
+  (Math/abs (- (Math/pow (reduce + (range 1 limit)) 2)
+               (reduce + (map #(Math/pow % 2) (range 1 limit))))))

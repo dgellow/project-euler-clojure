@@ -32,3 +32,12 @@
     (is (= (map #(smallest-multiple (range 1 %)) (range 1 18))
            '((1) (1) (2) (6) (12) (60) (60) (420) (840) (2520) (2520)
              (27720) (27720) (360360) (360360) (360360) (720720))))))
+
+;; problem 6
+(deftest sum-square-diff-test
+  (testing "difference 1^2 + 2^2 + ... + 10^2 = 385 and (1 + 2 + ... + 10)^2 = 55^2 = 3025"
+    (is (== (sum-square-diff 11) 2640))))
+
+(deftest sum-square-diff-test
+  (testing "difference 1^2 + 2^2 + ... + 100^2 and (1 + 2 + ... + 100)^2"
+    (is (== (sum-square-diff 101) 25164150))))
