@@ -18,7 +18,7 @@
 (defn fib-seq
   "Generates a lazy sequence of all Fibonacci numbers."
   [a b]
-  (cons a (lazy-seq (lazy-seq (fib-seq b (+' a b))))))
+  (cons a (lazy-seq (fib-seq b (+' a b)))))
 
 (defn sum-of-fib
   [max-value]
