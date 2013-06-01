@@ -1,6 +1,6 @@
 (ns euler-clojure.core)
 
-;; problem 1
+;; problem 1 - Multiples of 3 and 5
 (defn multiples
   "Returns all multiples of given numbers within (range 1 limit)"
   [limit & numbers]
@@ -14,6 +14,7 @@
   (reduce + (apply multiples limit numbers)))
 
 
+;; problem 2 - Even Fibonacci numbers
 (defn fib-seq
   "Generates a lazy sequence of all Fibonacci numbers."
   [a b]
@@ -24,6 +25,7 @@
   (reduce + (filter even? (take-while #(< % max-value) (fib-seq 1 1)))))
 
 
+;; problem 3 - Largest prime factor
 (defn prime-seq
   "Generates a lazy sequence of all prime numbers."
   [numbers]
