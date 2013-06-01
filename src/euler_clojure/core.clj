@@ -43,3 +43,28 @@
         (recur (inc i) (/ n i) (conj acc i))
         (recur (inc i) n acc))
       acc)))
+
+
+;; problem 4 - Largest palindrome product
+(defn palindrome? [x y]
+  (if (= (str (* x y)) (apply str (reverse (str (* x y)))))
+    true
+    false))
+
+(defn ->x-y [x y]
+  (if (= 1 x)
+    {:x y :y (dec y)}
+    {:x (dec x) :y y}))
+
+(defn palindrome-products [n]
+  (loop [x n
+         y n
+         acc []]
+    (if (and (= 1 x) (= 1 y))
+      acc
+      (if (palindrome? x y)
+        (recur (:x (->x-y x y)) (:y (->x-y x y)) (conj acc (* x y)))
+        (recur (:x (->x-y x y)) (:y (->x-y x y)) acc)))))
+
+(defn largest-palindrome-product [n]
+  (apply max (palindrome-products n)))
