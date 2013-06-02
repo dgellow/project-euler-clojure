@@ -109,6 +109,7 @@
 
 ;; problem 8 - Largest product in a series
 (defn ->str-of-numbers [s]
+  "Return a number which is the concat of all digits in a string."
   (apply str (re-seq #"[0-9]+" s)))
 
 (defn largest-product-series
