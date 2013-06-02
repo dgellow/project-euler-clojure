@@ -97,11 +97,17 @@
 ;; problem 7 - 10001st prime
 ;; credits to Ted Pennings http://stackoverflow.com/a/7941430
 (defn prime?
-  [n]
-      (.isProbablePrime (BigInteger/valueOf n) 5))
+  [n certainty]
+      (.isProbablePrime (BigInteger/valueOf n) certainty))
 
 (defn prime-nth
   [nth]
   (last (take (dec nth) ;; we don't consider number 2
-              (filter prime?
+              (filter #(prime? % 10)
                 (take-nth 2 (iterate inc 1))))))
+
+
+;; problem 10 - Sum of primes
+(defn sum-prime
+  [limit]
+  (reduce + (take-while #(< % limit) (filter #(prime? % 40) (iterate inc 1)))))
