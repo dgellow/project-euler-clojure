@@ -84,7 +84,7 @@
 
 (defn smallest-multiple
   [numbers]
-  (take 1(filter #(multiple-of-all? % numbers) (iterate inc 1))))
+  (take 1 (filter #(multiple-of-all? % numbers) (iterate inc 1))))
 
 
 ;; problem 6 - Sum square difference
@@ -105,6 +105,16 @@
   (last (take (dec nth) ;; we don't consider number 2
               (filter #(prime? % 10)
                 (take-nth 2 (iterate inc 1))))))
+
+
+;; problem 8 - Largest product in a series
+(defn ->str-of-numbers [s]
+  (apply str (re-seq #"[0-9]+" s)))
+
+(defn largest-product-series
+  [length s]
+  (apply max (map #(apply * %)
+        (partition length 1 (map #(Character/getNumericValue %) (str s))))))
 
 
 ;; problem 10 - Sum of primes
