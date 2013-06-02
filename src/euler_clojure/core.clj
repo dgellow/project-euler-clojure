@@ -114,7 +114,7 @@
 (defn largest-product-series
   [length s]
   (apply max (map #(apply * %)
-        (partition length 1 (map #(Character/getNumericValue %) (str s))))))
+        (partition length 1 (map #(Character/getNumericValue %) (->str-of-numbers s))))))
 
 
 ;; problem 10 - Sum of primes
