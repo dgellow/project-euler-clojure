@@ -122,3 +122,10 @@
 (defn sum-prime
   [limit]
   (reduce + (take-while #(< % limit) (filter #(prime? % 40) (iterate inc 1)))))
+
+
+;; problem 13 - Large sum
+(defn large-sum
+  [s]
+  (apply + (map #(BigInteger. %) (re-seq #"[0-9]+" s))))
+
